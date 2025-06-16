@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import random
@@ -6,7 +5,7 @@ import string
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key'
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Store active rooms and their users
 active_rooms = {}
@@ -58,4 +57,4 @@ def handle_message(data):
     }, room=room_id)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True) 
+    socketio.run(app, host='0.0.0.0', port=5000, debug=False) 

@@ -1,0 +1,13 @@
+[Unit]
+Description=Anonymous Messenger Application
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/anonymous-messenger
+Environment="PATH=/home/ubuntu/anonymous-messenger/venv/bin"
+ExecStart=/home/ubuntu/anonymous-messenger/venv/bin/python app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target 
